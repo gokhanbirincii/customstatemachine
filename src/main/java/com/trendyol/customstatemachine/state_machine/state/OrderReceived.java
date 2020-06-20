@@ -4,7 +4,6 @@ import com.trendyol.customstatemachine.annotation.Statable;
 import com.trendyol.customstatemachine.state_machine.StateMachineEvent;
 import com.trendyol.customstatemachine.state_machine.StateMachineState;
 import com.trendyol.customstatemachine.state_machine.model.TransitionModel;
-import java.util.ArrayList;
 import java.util.List;
 import org.springframework.statemachine.action.Action;
 
@@ -26,12 +25,8 @@ public class OrderReceived extends State {
     @Override
     public List<TransitionModel> getTransitions() {
 
-        final var transitions = new ArrayList<TransitionModel>();
-
-        transitions.add(new TransitionModel(getSourceState(), StateMachineState.SUPPLIED,
-                StateMachineEvent.GET_SUPPLIED));
-
-        return transitions;
+        return List.of(new TransitionModel(getSourceState(), StateMachineState.ORDER_RECEIVED,
+                StateMachineEvent.GET_ORDER_RECEIVED));
     }
 
     @Override
