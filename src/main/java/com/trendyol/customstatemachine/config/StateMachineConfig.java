@@ -8,10 +8,14 @@ import com.trendyol.customstatemachine.state_machine.state.State;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.support.StaticListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.task.SyncTaskExecutor;
+import org.springframework.scheduling.concurrent.ConcurrentTaskScheduler;
 import org.springframework.statemachine.config.EnableStateMachine;
 import org.springframework.statemachine.config.EnumStateMachineConfigurerAdapter;
+import org.springframework.statemachine.config.builders.StateMachineConfigurationConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineStateConfigurer;
 import org.springframework.statemachine.config.builders.StateMachineTransitionConfigurer;
 
@@ -65,5 +69,17 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<StateM
             }
         });
     }
+
+    @Override
+    public void configure(StateMachineConfigurationConfigurer<StateMachineState, StateMachineEvent> config)
+            throws Exception {
+        config
+                .withConfiguration()
+                .taskExecutor(new SyncTaskExecutor())
+                .taskScheduler(new ConcurrentTaskScheduler());
+//                .listener(new StateMachineListenerAdapter<States, Events>());
+    }
+
+
 
 }

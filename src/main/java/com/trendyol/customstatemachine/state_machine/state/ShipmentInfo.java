@@ -12,7 +12,10 @@ public class ShipmentInfo extends State {
 
     @Override
     public Action<StateMachineState, StateMachineEvent> startAction() {
-        return stateContext -> System.out.println("Here Shipment Info State");
+        return stateContext -> {
+            System.out.println("SHIPMENT INFO");
+          stateContext.getExtendedState().getVariables().put(getSourceState(), "ShipmentInfo");
+        };
     }
 
     @Override

@@ -26,7 +26,9 @@ public class StateMachineService {
 
         stateMachine.sendEvent(event);
 
-        return new ExecuteResponse(stateMachine.getState().toString());
+        final var currentStateValue = stateMachine.getExtendedState().getVariables().get(stateMachine.getState().getId());
+
+        return new ExecuteResponse(stateMachine.getState().getId().name(), currentStateValue.toString());
 
     }
 

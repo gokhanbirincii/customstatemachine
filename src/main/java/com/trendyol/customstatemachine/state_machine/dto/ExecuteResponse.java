@@ -10,5 +10,6 @@ import lombok.Setter;
 public class ExecuteResponse {
 
     private String currentState;
+    private String currentStateValue;
 
 }
