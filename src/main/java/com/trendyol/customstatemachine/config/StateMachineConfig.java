@@ -8,7 +8,6 @@ import com.trendyol.customstatemachine.state_machine.state.State;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.support.StaticListableBeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.SyncTaskExecutor;
@@ -77,7 +76,6 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<StateM
                 .withConfiguration()
                 .taskExecutor(new SyncTaskExecutor())
                 .taskScheduler(new ConcurrentTaskScheduler());
-//                .listener(new StateMachineListenerAdapter<States, Events>());
     }
 
 
