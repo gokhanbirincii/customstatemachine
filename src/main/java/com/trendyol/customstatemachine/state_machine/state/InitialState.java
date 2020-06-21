@@ -9,7 +9,7 @@ import java.util.List;
 import org.springframework.statemachine.action.Action;
 
 @Statable
-public class InitialState extends State {
+public class InitialState implements State {
 
     @Override
     public Action<StateMachineState, StateMachineEvent> startAction() {

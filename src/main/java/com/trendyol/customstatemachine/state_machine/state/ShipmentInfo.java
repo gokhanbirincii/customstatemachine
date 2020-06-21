@@ -8,7 +8,7 @@ import java.util.List;
 import org.springframework.statemachine.action.Action;
 
 @Statable
-public class ShipmentInfo extends State {
+public class ShipmentInfo implements State {
 
     @Override
     public Action<StateMachineState, StateMachineEvent> startAction() {

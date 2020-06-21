@@ -6,15 +6,15 @@ import com.trendyol.customstatemachine.state_machine.model.TransitionModel;
 import java.util.List;
 import org.springframework.statemachine.action.Action;
 
-public abstract class State {
+public interface State {
 
-    public abstract Action<StateMachineState, StateMachineEvent> startAction();
+    Action<StateMachineState, StateMachineEvent> startAction();
 
-    public abstract Action<StateMachineState, StateMachineEvent> exitAction();
+    Action<StateMachineState, StateMachineEvent> exitAction();
 
-    public abstract List<TransitionModel> getTransitions();
+    List<TransitionModel> getTransitions();
 
-    public List<TransitionModel> transitionsWrapper() {
+    default List<TransitionModel> transitionsWrapper() {
         final var transitions = getTransitions();
 
         transitions.add(new TransitionModel());
@@ -23,6 +23,6 @@ public abstract class State {
         return transitions;
     }
 
-    public abstract StateMachineState getSourceState();
+    StateMachineState getSourceState();
 
 }
