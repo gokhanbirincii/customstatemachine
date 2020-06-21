@@ -17,14 +17,16 @@ Yine örnek üzerinden ilerleyecek olursak.
 1. http://localhost:8080/api/start
 2. http://localhost:8080/api/execute?event=GET_SHIPMENT_INFO
 
-şeklinde sırasıyla apiye call yaparsak: 
+şeklinde sırasıyla apiye call yaparsak, aşağıdaki responsu alıyor olacağız. 
 
 `{
 currentState: "SHIPMENT_INFO",
 currentStateValue: "ShipmentInfo"
 }`
 
-bu durumda yukarıdaki responsu alırız state bilgisi memoryde durduğu için:
+`currentStateValue` propertysinde de görüldüğü üzere state'in içerisine değer yazıp/okuyabiliriz.
+
+State bilgisi memoryde durduğu için:
 
 `StateMachine<StateMachineState, StateMachineEvent> stateMachine;  
 `
