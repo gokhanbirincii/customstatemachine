@@ -8,11 +8,11 @@ import java.util.List;
 import org.springframework.statemachine.action.Action;
 
 @Statable
-public class OrderReceived extends State {
+public class ShipmentInfo extends State {
 
     @Override
     public Action<StateMachineState, StateMachineEvent> startAction() {
-        return stateContext -> System.out.println("Here Order Received State");
+        return stateContext -> System.out.println("Here Shipment Info State");
     }
 
     @Override
@@ -25,12 +25,12 @@ public class OrderReceived extends State {
     @Override
     public List<TransitionModel> getTransitions() {
 
-        return List.of(new TransitionModel(getSourceState(), StateMachineState.ORDER_RECEIVED,
-                StateMachineEvent.GET_ORDER_RECEIVED));
+        return List.of(new TransitionModel(getSourceState(), StateMachineState.SHIPMENT_INFO,
+                StateMachineEvent.GET_SHIPMENT_INFO));
     }
 
     @Override
     public StateMachineState getSourceState() {
-        return StateMachineState.ORDER_RECEIVED;
+        return StateMachineState.SHIPMENT_INFO;
     }
 }

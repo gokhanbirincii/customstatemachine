@@ -14,6 +14,15 @@ public abstract class State {
 
     public abstract List<TransitionModel> getTransitions();
 
+    public List<TransitionModel> transitionsWrapper() {
+        final var transitions = getTransitions();
+
+        transitions.add(new TransitionModel());
+        //We can add common state definitions here
+
+        return transitions;
+    }
+
     public abstract StateMachineState getSourceState();
 
 }

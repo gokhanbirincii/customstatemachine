@@ -2,9 +2,8 @@ package com.trendyol.customstatemachine.state_machine;
 
 public enum StateMachineState {
     INITIAL,
-    ORDER_RECEIVED,
-    SUPPLIED,
-    SHIPPED,
-    DELIVERED,
+    SHIPMENT_INFO,
+    CANCEL_CLAIM,
+    USER_INFO,
     END
 }

@@ -39,13 +39,13 @@ public class StateMachineConfig extends EnumStateMachineConfigurerAdapter<StateM
                 .withStates()
                 .initial(StateMachineState.INITIAL, initialState.startAction());
 
-        for (String beanName : stateBeanNames) {
+        for (var beanName : stateBeanNames) {
 
             if (beanName.equals(INITIAL_STATE_BEAN_NAME)) {
                 continue;
             }
 
-            var state = applicationContext.getBean(beanName, State.class);
+            final var state = applicationContext.getBean(beanName, State.class);
             stateConfigurer.state(state.getSourceState(), state.startAction(), state.exitAction());
         }
 

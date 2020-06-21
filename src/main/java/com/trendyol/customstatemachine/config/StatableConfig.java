@@ -29,7 +29,7 @@ public class StatableConfig {
         return states.stream().flatMap(stateClazz -> {
             try {
                 final var getLatestTransitions = (List<TransitionModel>) stateClazz
-                        .getMethod("getTransitions")
+                        .getMethod("transitionsWrapper")
                         .invoke(stateClazz.getDeclaredConstructor().newInstance());
                 return getLatestTransitions.stream();
             } catch (NoSuchMethodException | InvocationTargetException | IllegalAccessException | InstantiationException e) {
@@ -42,7 +42,7 @@ public class StatableConfig {
     @Bean("stateBeanNames")
     public List<String> getStateBeanNames() {
 
-        final Reflections ref = new Reflections(BASE_PACKAGE_PATH);
+        final var ref = new Reflections(BASE_PACKAGE_PATH);
 
         final var states = ref.getTypesAnnotatedWith(Statable.class);
 
